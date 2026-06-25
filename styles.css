@@ -217,10 +217,11 @@ p { text-wrap: pretty; }
   width: 200px;
 }
 .phone img { width: 100%; height: auto; }
-/* Mobile: show only the centre phone so the cluster never overflows. */
-.hero .phones .phone:nth-child(1),
-.hero .phones .phone:nth-child(3) { display: none; }
-.hero .phones .phone:nth-child(2) { width: 220px; }
+/* Mobile: the same fanned three-phone cluster as desktop, scaled to fit. */
+.hero .phones .phone { width: 124px; border-radius: 18px; }
+.hero .phones .phone:nth-child(1) { transform: rotate(-5deg) translateY(9px); margin-right: -16px; z-index: 1; }
+.hero .phones .phone:nth-child(2) { transform: translateY(-7px); z-index: 3; }
+.hero .phones .phone:nth-child(3) { transform: rotate(5deg) translateY(9px); margin-left: -16px; z-index: 1; }
 
 /* ---------- generic section ---------- */
 .section { padding-block: 88px; }
@@ -372,11 +373,10 @@ p { text-wrap: pretty; }
   .nav .nav-anchor { display: inline; }
   .brand span { font-size: 1.15rem; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
-  /* Restore the fanned three-phone cluster on wider screens. */
-  .hero .phones .phone:nth-child(1),
-  .hero .phones .phone:nth-child(3) { display: block; }
+  /* Restore the desktop phone sizing/spacing (mobile scales them down). */
+  .hero .phones .phone { width: 200px; border-radius: 26px; }
   .hero .phones .phone:nth-child(1) { transform: rotate(-5deg) translateY(14px); margin-right: -28px; z-index: 1; }
-  .hero .phones .phone:nth-child(2) { width: 200px; transform: translateY(-10px); z-index: 3; }
+  .hero .phones .phone:nth-child(2) { transform: translateY(-10px); z-index: 3; }
   .hero .phones .phone:nth-child(3) { transform: rotate(5deg) translateY(14px); margin-left: -28px; z-index: 1; }
   .show-row { grid-template-columns: 1fr 1fr; gap: 56px; }
   .show-row.reverse .show-media { order: 2; }
@@ -392,5 +392,7 @@ p { text-wrap: pretty; }
     padding-bottom: 104px;
   }
   .phone { width: 230px; }
+  .hero .phones .phone:nth-child(1),
+  .hero .phones .phone:nth-child(3) { width: 230px; }
   .feature-grid { grid-template-columns: repeat(3, 1fr); }
 }
